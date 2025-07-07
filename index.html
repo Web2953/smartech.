@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmarTech - Premium iPhone Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>SmarTech</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#trade-in">Trade-In</a>
+                <a href="#reviews">Reviews</a>
+            </div>
+            <div class="nav-actions">
+                <button class="search-btn">🔍</button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    🛒 <span class="cart-count">0</span>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+        <div class="mobile-nav">
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#trade-in">Trade-In</a>
+            <a href="#reviews">Reviews</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>New iPhones</h2>
+                <p class="hero-subtitle">Your new superpower. Now available at SmarTech.</p>
+                <p class="hero-description">Experience the extraordinary with our premium selection of iPhones. Certified quality, unbeatable prices.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('shop')">Shop Now</button>
+                    <button class="btn-secondary" onclick="scrollToSection('reviews')">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="phone-showcase">
+                    <img src="https://i.postimg.cc/0j2s4jhd/92.jpg" alt="Phone Showcase" class="hero-phone-img" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="container">
+            <h2>Why Choose SmarTech?</h2>
+            <p class="section-subtitle">Experience the difference with our premium service and exceptional products.</p>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Quality Guaranteed</h3>
+                    <p>Every device is thoroughly inspected and certified to meet our premium standards.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Easy Trade-ins</h3>
+                    <p>Upgrade your device by trading in your current iPhone for credit toward a new one.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Expert Support</h3>
+                    <p>Our dedicated team is always ready to assist you with any questions or concerns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="shop">
+        <div class="container">
+            <h2>Shop iPhones</h2>
+            <p class="section-subtitle">Browse our collection of premium iPhones from iPhone 11 to iPhone 15 pro max.</p>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Filter by:</label>
+                    <select id="modelFilter" onchange="filterProducts()">
+                        <option value="">Model</option>
+                        <option value="iPhone 15">iPhone 15</option>
+                        <option value="iPhone 14">iPhone 14</option>
+                        <option value="iPhone 13">iPhone 13</option>
+                        <option value="iPhone 12">iPhone 12</option>
+                        <option value="iPhone 11">iPhone 11</option>
+                    </select>
+                    <select id="conditionFilter" onchange="filterProducts()">
+                        <option value="">Condition</option>
+                        <option value="New">New</option>
+                        <option value="Used">Used</option>
+                        <option value="Refurbished">Refurbished</option>
+                    </select>
+                </div>
+                <button class="clear-filters" onclick="clearFilters()">Clear All Filters</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Product -->
+    <section class="featured-product">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-text">
+                    <span class="featured-label">Featured Product</span>
+                    <h2>iPhone 13 Pro</h2>
+                    <p>Experience the extraordinary with our premium iPhone 13 Pro. Featuring a stunning Super Retina XDR display with ProMotion, A15 Bionic chip, and an advanced camera system.</p>
+                    <ul class="featured-features">
+                        <li>✓ Super Retina XDR display with ProMotion</li>
+                        <li>✓ A15 Bionic chip with 5-core GPU</li>
+                        <li>✓ Pro camera system with 3x optical zoom</li>
+                        <li>✓ Up to 28 hours of video playback</li>
+                    </ul>
+                    <div class="featured-buttons">
+                        <button class="btn-primary" onclick="addToCart('iPhone 13 Pro', 11499, '128GB')">Add to Cart</button>
+                        <button class="btn-secondary">Learn More</button>
+                    </div>
+                </div>
+                <div class="featured-image">
+                    <div class="phone-3d">📱</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trade-in Section -->
+    <section id="trade-in" class="trade-in">
+        <div class="container">
+            <h2>Estimate Your Trade-in Value</h2>
+            <div class="trade-in-form">
+                <div class="form-group">
+                    <label>Select Your Device</label>
+                    <select id="tradeModel">
+                        <option value="">Select iPhone Model</option>
+                        <option value="iPhone 15 Pro Max">iPhone 15 Pro Max</option>
+                        <option value="iPhone 15 Pro">iPhone 15 Pro</option>
+                        <option value="iPhone 15">iPhone 15</option>
+                        <option value="iPhone 14 Pro Max">iPhone 14 Pro Max</option>
+                        <option value="iPhone 14 Pro">iPhone 14 Pro</option>
+                        <option value="iPhone 14">iPhone 14</option>
+                        <option value="iPhone 13 Pro Max">iPhone 13 Pro Max</option>
+                        <option value="iPhone 13 Pro">iPhone 13 Pro</option>
+                        <option value="iPhone 13">iPhone 13</option>
+                        <option value="iPhone 12 Pro Max">iPhone 12 Pro Max</option>
+                        <option value="iPhone 12 Pro">iPhone 12 Pro</option>
+                        <option value="iPhone 12">iPhone 12</option>
+                        <option value="iPhone 11 Pro Max">iPhone 11 Pro Max</option>
+                        <option value="iPhone 11 Pro">iPhone 11 Pro</option>
+                        <option value="iPhone 11">iPhone 11</option>
+                        <option value="iPhone XR">iPhone XR</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Storage Capacity</label>
+                    <select id="tradeStorage">
+                        <option value="">Select Storage</option>
+                        <option value="64GB">64GB</option>
+                        <option value="128GB">128GB</option>
+                        <option value="256GB">256GB</option>
+                        <option value="512GB">512GB</option>
+                        <option value="1TB">1TB</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Device Condition</label>
+                    <div class="condition-options">
+                        <button type="button" class="condition-btn active" data-condition="Excellent" onclick="selectCondition('Excellent')">
+                            😊<br>Excellent
+                        </button>
+                        <button type="button" class="condition-btn" data-condition="Good" onclick="selectCondition('Good')">
+                            🙂<br>Good
+                        </button>
+                        <button type="button" class="condition-btn" data-condition="Fair" onclick="selectCondition('Fair')">
+                            😐<br>Fair
+                        </button>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="calculateTradeIn()">Estimate Value</button>
+            </div>
+            <div class="trade-in-result">
+                <div class="trade-value">
+                    <h3>Trade-in Value</h3>
+                    <p>Select your device details to get an estimated trade-in value.</p>
+                    <div class="estimated-value" id="tradeValue"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2>Customer Reviews</h2>
+            <div class="reviews-grid">
+                <div class="review">
+                    <div class="review-header">
+                        <div class="avatar">JD</div>
+                        <div class="review-info">
+                            <h4>John Doe</h4>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <h5>Amazing Quality</h5>
+                    <p>The iPhone I purchased was in perfect condition. Excellent service and fast delivery!</p>
+                    <span class="review-date">Purchased on 2024-01-15</span>
+                </div>
+                <div class="review">
+                    <div class="review-header">
+                        <div class="avatar">SM</div>
+                        <div class="review-info">
+                            <h4>Sarah Miller</h4>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <h5>Great Trade-in Value</h5>
+                    <p>Got a fantastic deal on my trade-in. The process was seamless and transparent.</p>
+                    <span class="review-date">Purchased on 2024-02-08</span>
+                </div>
+                <div class="review">
+                    <div class="review-header">
+                        <div class="avatar">MJ</div>
+                        <div class="review-info">
+                            <h4>Mike Johnson</h4>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <h5>Excellent Support</h5>
+                    <p>Customer service was outstanding. They helped me choose the perfect iPhone for my needs.</p>
+                    <span class="review-date">Purchased on 2024-02-20</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for the latest product updates, exclusive offers, and tech news.</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn-primary">Subscribe</button>
+            </form>
+            <p class="privacy-text">By subscribing, you agree to our Privacy Policy and consent to receive updates from SmarTech.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SmarTech</h3>
+                    <p>Premium iPhones at competitive prices. Quality guaranteed.</p>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">🐦</a>
+                        <a href="#">📷</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#trade-in">Trade-in</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">Warranty Information</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li>📍 West Walk shop 5</li>
+                        <li>📞 0822010534</li>
+                        <li>✉️ Mxolisingidla@gmail.com</li>
+                        <li>🕒 Mon-Fri: 9AM-6PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Subtotal: R<span id="cartTotal">0</span></strong>
+            </div>
+            <button class="btn-primary checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h3>Checkout</h3>
+                <button class="close-checkout" onclick="closeCheckout()">✕</button>
+            </div>
+            <form class="checkout-form" onsubmit="processCheckout(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" name="address" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ZIP Code</label>
+                        <input type="text" name="zip" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Country</label>
+                    <select name="country" required>
+                        <option value="">Select Country</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="checkout-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span>R<span id="checkoutSubtotal">0</span></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span>FREE</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span>R<span id="checkoutTotal">0</span></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Complete Purchase</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
